@@ -18,6 +18,11 @@ namespace ViewModelFirst.ViewModels
             _navigationProvider = navigationProvider;
         }
 
+        public override string Title
+        {
+            get { return "Main Menu"; }
+        }
+
         public ICommand Players
         {
             get

@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace ViewModelFirst
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        public abstract string Title { get; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)

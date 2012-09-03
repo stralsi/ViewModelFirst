@@ -7,5 +7,9 @@ namespace ViewModelFirst.ViewModels
 {
     public class PlayersViewModel : ViewModelBase
     {
+        public override string Title
+        {
+            get { return "Players"; }
+        }
     }
 }

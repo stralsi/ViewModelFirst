@@ -3,10 +3,12 @@ using ViewModelFirst.Models;
 using ViewModelFirst.ViewModels;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Linq;
 
 namespace ViewModelFirst
 {
-    public class NavigationProvider : INavigationProvider
+    public class NavigationProvider : INavigationProvider, INotifyPropertyChanged
     {
         private ObservableCollection<ViewModelBase> _viewModels =
             new ObservableCollection<ViewModelBase>();
@@ -24,6 +26,11 @@ namespace ViewModelFirst
             get { return _backCommand; }
         }
 
+        public string Title
+        {
+            get { return _viewModels.Last().Title; }
+        }
+
         public IEnumerable<ViewModelBase> Contents
         {
             get { return _viewModels; }
@@ -33,6 +40,7 @@ namespace ViewModelFirst
         {
             _viewModels.Add(viewModel);
             _backCommand.SetCanExecute(true);
+            NotifyPropertyChanged("Title");
         }
 
         public void GoBackward()
@@ -40,6 +48,15 @@ namespace ViewModelFirst
             _viewModels.RemoveAt(_viewModels.Count - 1);
             if (_viewModels.Count == 1)
                 _backCommand.SetCanExecute(false);
+            NotifyPropertyChanged("Title");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
