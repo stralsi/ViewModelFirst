@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ViewModelFirst.Models;
+using System.Windows.Input;
 
 namespace ViewModelFirst.ViewModels
 {
@@ -15,6 +16,17 @@ namespace ViewModelFirst.ViewModels
         {
             _context = context;
             _navigationProvider = navigationProvider;
+        }
+
+        public ICommand Players
+        {
+            get
+            {
+                return new RelayCommand(delegate
+                {
+                    _navigationProvider.GoForward(new PlayersViewModel());
+                });
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ViewModelFirst.ViewModels
 {
-    public class PlayersViewModel
+    public class PlayersViewModel : ViewModelBase
     {
     }
 }

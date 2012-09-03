@@ -65,6 +65,7 @@
     <Compile Include="ViewModels\GamesViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\PlayersViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\TeamsViewModel.cs" />
     <Compile Include="Views\GamesView.xaml.cs">
       <DependentUpon>GamesView.xaml</DependentUpon>
