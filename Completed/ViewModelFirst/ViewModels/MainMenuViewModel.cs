@@ -8,12 +8,12 @@ namespace ViewModelFirst.ViewModels
 {
     public class MainMenuViewModel : ViewModelBase
     {
-        private readonly Document _document;
+        private readonly Context _context;
         private readonly INavigationProvider _navigationProvider;
         
-        public MainMenuViewModel(Document document, INavigationProvider navigationProvider)
+        public MainMenuViewModel(Context context, INavigationProvider navigationProvider)
         {
-            _document = document;
+            _context = context;
             _navigationProvider = navigationProvider;
         }
     }

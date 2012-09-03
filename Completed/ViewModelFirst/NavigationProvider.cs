@@ -10,9 +10,9 @@ namespace ViewModelFirst
         private ObservableCollection<ViewModelBase> _viewModels =
             new ObservableCollection<ViewModelBase>();
 
-        public NavigationProvider(Document document)
+        public NavigationProvider(Context context)
         {
-            _viewModels.Add(new MainMenuViewModel(document, this));
+            _viewModels.Add(new MainMenuViewModel(context, this));
         }
 
         public IEnumerable<ViewModelBase> Contents

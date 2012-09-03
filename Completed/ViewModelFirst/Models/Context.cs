@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ViewModelFirst.Models
 {
-    public class Document
+    public class Context
     {
     }
 }

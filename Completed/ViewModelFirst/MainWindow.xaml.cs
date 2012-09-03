@@ -15,7 +15,7 @@ namespace ViewModelFirst
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new NavigationProvider(new Document());
+            DataContext = new NavigationProvider(new Context());
         }
     }
 }

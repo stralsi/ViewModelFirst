@@ -4,6 +4,6 @@
         Loaded="Window_Loaded"
         Title="View Model First" Height="350" Width="525">
     <Grid>
-        <ListBox ItemsSource="{Binding Contents}"/>
+        <ItemsControl ItemsSource="{Binding Contents}"/>
     </Grid>
 </Window>
