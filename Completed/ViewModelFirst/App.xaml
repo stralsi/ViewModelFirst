@@ -8,5 +8,8 @@
         <DataTemplate DataType="{x:Type viewModels:MainMenuViewModel}">
             <views:MainMenuView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:PlayersViewModel}">
+            <views:PlayersView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

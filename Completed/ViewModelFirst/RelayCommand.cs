@@ -6,6 +6,7 @@ namespace ViewModelFirst
     public class RelayCommand : ICommand
     {
         private Action _action;
+        private bool _canExecute = true;
 
         public RelayCommand(Action action)
         {
@@ -14,7 +15,14 @@ namespace ViewModelFirst
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _canExecute;
+        }
+
+        public void SetCanExecute(bool value)
+        {
+            _canExecute = value;
+            if (CanExecuteChanged != null)
+                CanExecuteChanged(this, new EventArgs());
         }
 
         public event EventHandler CanExecuteChanged;

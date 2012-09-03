@@ -4,6 +4,13 @@
         Loaded="Window_Loaded"
         Title="View Model First" Height="350" Width="525">
     <Grid>
-        <ItemsControl ItemsSource="{Binding Contents}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Back" Command="{Binding Back}" Width="75" Margin="4" />
+        </StackPanel>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Contents}" Grid.RowSpan="2" />
     </Grid>
 </Window>
