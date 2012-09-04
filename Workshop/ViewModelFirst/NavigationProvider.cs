@@ -10,8 +10,17 @@ namespace ViewModelFirst
 {
     public class NavigationProvider : INavigationProvider, INotifyPropertyChanged
     {
+        private ObservableCollection<ViewModelBase> _contents =
+            new ObservableCollection<ViewModelBase>();
+
         public NavigationProvider(Context context)
         {
+            _contents.Add(new MainMenuViewModel(context, this));
+        }
+
+        public IEnumerable<ViewModelBase> Contents
+        {
+            get { return _contents; }
         }
 
         public void GoForward(ViewModelBase viewModel)
