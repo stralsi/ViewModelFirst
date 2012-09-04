@@ -12,7 +12,7 @@
             <Button Content="Back" Command="{Binding Back}" Width="75" Margin="4" />
             <TextBlock Text="{Binding Title}" Margin="4" FontSize="22"/>
         </StackPanel>
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Contents}" Grid.RowSpan="2">
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Contents}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid/>
