@@ -5,7 +5,11 @@ using System.Text;
 
 namespace ViewModelFirst.ViewModels
 {
-    public class TeamsViewModel
+    public class TeamsViewModel : ViewModelBase
     {
+        public override string Title
+        {
+            get { return "Teams"; }
+        }
     }
 }

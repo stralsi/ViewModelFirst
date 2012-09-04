@@ -11,5 +11,11 @@
         <DataTemplate DataType="{x:Type viewModels:PlayersViewModel}">
             <views:PlayersView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:TeamsViewModel}">
+            <views:TeamsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:GamesViewModel}">
+            <views:GamesView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

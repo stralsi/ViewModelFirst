@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Windows.Input;
 using ViewModelFirst.Models;
-using System.Windows.Input;
 
 namespace ViewModelFirst.ViewModels
 {
@@ -30,6 +26,28 @@ namespace ViewModelFirst.ViewModels
                 return new RelayCommand(delegate
                 {
                     _navigationProvider.GoForward(new PlayersViewModel());
+                });
+            }
+        }
+
+        public ICommand Teams
+        {
+            get
+            {
+                return new RelayCommand(delegate
+                {
+                    _navigationProvider.GoForward(new TeamsViewModel());
+                });
+            }
+        }
+
+        public ICommand Games
+        {
+            get
+            {
+                return new RelayCommand(delegate
+                {
+                    _navigationProvider.GoForward(new GamesViewModel());
                 });
             }
         }
