@@ -7,5 +7,8 @@ namespace ViewModelFirst.Models
 {
     public class Player
     {
+        public string Name { get; set; }
+        public int Years { get; set; }
+        public double Average { get; set; }
     }
 }

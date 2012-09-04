@@ -25,7 +25,7 @@ namespace ViewModelFirst.ViewModels
             {
                 return new RelayCommand(delegate
                 {
-                    _navigationProvider.GoForward(new PlayersViewModel());
+                    _navigationProvider.GoForward(new PlayersViewModel(_context, _navigationProvider));
                 });
             }
         }
