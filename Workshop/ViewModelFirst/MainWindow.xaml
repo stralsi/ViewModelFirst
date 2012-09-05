@@ -11,6 +11,11 @@
         <StackPanel Orientation="Horizontal">
         </StackPanel>
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Contents}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
         </ItemsControl>
     </Grid>
 </Window>

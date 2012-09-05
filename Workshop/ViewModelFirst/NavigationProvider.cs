@@ -25,6 +25,7 @@ namespace ViewModelFirst
 
         public void GoForward(ViewModelBase viewModel)
         {
+            _contents.Add(viewModel);
         }
 
         public void GoBackward()
