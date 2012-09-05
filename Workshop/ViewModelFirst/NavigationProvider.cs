@@ -30,6 +30,11 @@ namespace ViewModelFirst
             get { return _backCommand; }
         }
 
+        public string Title
+        {
+            get { return _contents.Last().Title; }
+        }
+
         public IEnumerable<ViewModelBase> Contents
         {
             get { return _contents; }
@@ -39,6 +44,7 @@ namespace ViewModelFirst
         {
             _contents.Add(viewModel);
             _backCommand.SetCanExecute(true);
+            NotifyPropertyChanged("Title");
         }
 
         public void GoBackward()
@@ -46,6 +52,7 @@ namespace ViewModelFirst
             _contents.RemoveAt(_contents.Count - 1);
             if (_contents.Count == 1)
                 _backCommand.SetCanExecute(false);
+            NotifyPropertyChanged("Title");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -9,7 +9,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Back" Command="{Binding Back}" />
+            <Button Content="Back" Command="{Binding Back}" Width="75" Margin="4" />
+            <TextBlock Text="{Binding Title}" FontSize="30" Margin="4" />
         </StackPanel>
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Contents}">
             <ItemsControl.ItemsPanel>
