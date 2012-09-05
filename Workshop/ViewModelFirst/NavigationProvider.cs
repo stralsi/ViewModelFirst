@@ -22,6 +22,7 @@ namespace ViewModelFirst
             {
                 GoBackward();
             });
+            _backCommand.SetCanExecute(false);
         }
 
         public ICommand Back
@@ -37,11 +38,14 @@ namespace ViewModelFirst
         public void GoForward(ViewModelBase viewModel)
         {
             _contents.Add(viewModel);
+            _backCommand.SetCanExecute(true);
         }
 
         public void GoBackward()
         {
             _contents.RemoveAt(_contents.Count - 1);
+            if (_contents.Count == 1)
+                _backCommand.SetCanExecute(false);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
