@@ -11,6 +11,7 @@ namespace ViewModelFirst.ViewModels
     {
         private readonly Context _context;
         private readonly INavigationProvider _navigationProvider;
+        private RelayCommand _detailsCommand;
 
         private string _selectedPlayer;
         
@@ -18,11 +19,23 @@ namespace ViewModelFirst.ViewModels
         {
             _context = context;
             _navigationProvider = navigationProvider;
+
+            _detailsCommand = new RelayCommand(delegate
+            {
+                _navigationProvider.GoForward(new PlayerViewModel(
+                    _context.GetPlayer(_selectedPlayer)));
+            });
+            _detailsCommand.SetCanExecute(false);
         }
 
         public override string Title
         {
             get { return "Players"; }
+        }
+
+        public ICommand Details
+        {
+            get { return _detailsCommand; }
         }
 
         public IEnumerable<string> Players
@@ -42,6 +55,8 @@ namespace ViewModelFirst.ViewModels
             set
             {
                 _selectedPlayer = value;
+                _detailsCommand.SetCanExecute(
+                    !String.IsNullOrWhiteSpace(_selectedPlayer));
             }
         }
     }

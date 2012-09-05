@@ -11,6 +11,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
+            <Button Content="Details" Command="{Binding Details}" />
         </StackPanel>
         <ListBox Grid.Row="1" ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}" Margin="4" Grid.RowSpan="2" />
     </Grid>
