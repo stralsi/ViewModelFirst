@@ -12,10 +12,21 @@ namespace ViewModelFirst
     {
         private ObservableCollection<ViewModelBase> _contents =
             new ObservableCollection<ViewModelBase>();
+        private RelayCommand _backCommand;
 
         public NavigationProvider(Context context)
         {
             _contents.Add(new MainMenuViewModel(context, this));
+
+            _backCommand = new RelayCommand(delegate
+            {
+                GoBackward();
+            });
+        }
+
+        public ICommand Back
+        {
+            get { return _backCommand; }
         }
 
         public IEnumerable<ViewModelBase> Contents
@@ -30,6 +41,7 @@ namespace ViewModelFirst
 
         public void GoBackward()
         {
+            _contents.RemoveAt(_contents.Count - 1);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
