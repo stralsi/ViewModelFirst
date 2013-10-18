@@ -31,9 +31,9 @@ namespace ViewModelFirst
             get { return _viewModels.Last().Title; }
         }
 
-        public IEnumerable<ViewModelBase> Contents
+        public ViewModelBase CurrentContents
         {
-            get { return _viewModels; }
+            get { return _viewModels.LastOrDefault(); }
         }
 
         public void GoForward(ViewModelBase viewModel)
@@ -41,6 +41,7 @@ namespace ViewModelFirst
             _viewModels.Add(viewModel);
             _backCommand.SetCanExecute(true);
             NotifyPropertyChanged("Title");
+            NotifyPropertyChanged("CurrentContents");
         }
 
         public void GoBackward()
@@ -49,6 +50,7 @@ namespace ViewModelFirst
             if (_viewModels.Count == 1)
                 _backCommand.SetCanExecute(false);
             NotifyPropertyChanged("Title");
+            NotifyPropertyChanged("CurrentContents");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
