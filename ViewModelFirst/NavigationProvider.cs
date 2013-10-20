@@ -17,11 +17,15 @@ namespace ViewModelFirst
         private RelayCommand _backCommand;
         private NavigationMap _navigationMap;
 
-        public NavigationProvider(NavigationMap navigationMap,Context context)
+        public NavigationProvider()
         {
-            _navigationMap = navigationMap;
             _backCommand = new RelayCommand(GoBackward);
             _backCommand.SetCanExecute(false);
+        }
+
+        public void BuildNavigationMap()
+        {
+            _navigationMap = NavigationConfig.BuildNavigationMap();
         }
 
         public ICommand Back

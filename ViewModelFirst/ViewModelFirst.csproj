@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App_Start\Bootstrap.cs" />
+    <Compile Include="App_Start\ObjBuilder.cs" />
     <Compile Include="App_Start\NavigationConfig.cs" />
     <Compile Include="INavigationProvider.cs" />
     <Compile Include="Models\Context.cs" />
