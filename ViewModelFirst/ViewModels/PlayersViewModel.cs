@@ -22,7 +22,8 @@ namespace ViewModelFirst.ViewModels
 
             _detailsCommand = new RelayCommand(delegate
             {
-                _navigationProvider.GoForward(new PlayerViewModel(_context.GetPlayer(_selectedPlayer)));
+                //_navigationProvider.GoForward(new PlayerViewModel(_context.GetPlayer(_selectedPlayer)));
+                _navigationProvider.Navigate("details",_context.GetPlayer(_selectedPlayer));
             });
             _detailsCommand.SetCanExecute(false);
         }

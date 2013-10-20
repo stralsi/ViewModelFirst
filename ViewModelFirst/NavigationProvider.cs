@@ -10,13 +10,16 @@ namespace ViewModelFirst
 {
     public class NavigationProvider : INavigationProvider, INotifyPropertyChanged
     {
-        private ObservableCollection<ViewModelBase> _viewModels =
-            new ObservableCollection<ViewModelBase>();
-        private RelayCommand _backCommand;
+        //private ObservableCollection<ViewModelBase> _viewModels =
+        //    new ObservableCollection<ViewModelBase>();
+        private List<string> _viewModelHistory = new List<string>();
 
-        public NavigationProvider(Context context)
+        private RelayCommand _backCommand;
+        private NavigationMap _navigationMap;
+
+        public NavigationProvider(NavigationMap navigationMap,Context context)
         {
-            _viewModels.Add(new MainMenuViewModel(context, this));
+            _navigationMap = navigationMap;
             _backCommand = new RelayCommand(GoBackward);
             _backCommand.SetCanExecute(false);
         }
@@ -28,29 +31,65 @@ namespace ViewModelFirst
 
         public string Title
         {
-            get { return _viewModels.Last().Title; }
+            get {
+                if (_currentContents == null) return "";
+                return _currentContents.Title; 
+            }
         }
 
+        private ViewModelBase _currentContents;
         public ViewModelBase CurrentContents
         {
-            get { return _viewModels.LastOrDefault(); }
+            get { return _currentContents; }
+            set
+            {
+                if (value != _currentContents)
+                {
+                    _currentContents = value;
+                    NotifyPropertyChanged("CurrentContents");
+                    NotifyPropertyChanged("Title");
+                }
+            }
         }
 
-        public void GoForward(ViewModelBase viewModel)
+        //public void GoForward(ViewModelBase viewModel)
+        //{
+        //    _viewModels.Add(viewModel);
+        //    _backCommand.SetCanExecute(true);
+        //    NotifyPropertyChanged("Title");
+        //    NotifyPropertyChanged("CurrentContents");
+        //}
+
+        public void Navigate(string actionName, params object[] actionParameters)
         {
-            _viewModels.Add(viewModel);
+            var sourceTypeName = CurrentContents == null?"": CurrentContents.GetType().Name;
+
+            var viewModel = _navigationMap.GetDestinationViewModel(sourceTypeName, actionName, actionParameters);
+            _viewModelHistory.Add(viewModel.GetType().Name);
             _backCommand.SetCanExecute(true);
-            NotifyPropertyChanged("Title");
-            NotifyPropertyChanged("CurrentContents");
+
+            CurrentContents = viewModel;
         }
+
+        //public void GoBackward()
+        //{
+        //    _viewModels.RemoveAt(_viewModels.Count - 1);
+        //    if (_viewModels.Count == 1)
+        //        _backCommand.SetCanExecute(false);
+        //    NotifyPropertyChanged("Title");
+        //    NotifyPropertyChanged("CurrentContents");
+        //}
 
         public void GoBackward()
         {
-            _viewModels.RemoveAt(_viewModels.Count - 1);
-            if (_viewModels.Count == 1)
+            var sourceTypeName = CurrentContents == null ? "" : CurrentContents.GetType().Name;
+
+            _viewModelHistory.RemoveAt(_viewModelHistory.Count - 1);
+            if (_viewModelHistory.Count == 1)
                 _backCommand.SetCanExecute(false);
-            NotifyPropertyChanged("Title");
-            NotifyPropertyChanged("CurrentContents");
+
+            var viewModel = _navigationMap.GetDestinationViewModel(sourceTypeName, "back", null /*actionParameters*/);
+            CurrentContents = viewModel;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

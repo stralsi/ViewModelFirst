@@ -25,7 +25,8 @@ namespace ViewModelFirst.ViewModels
             {
                 return new RelayCommand(delegate
                 {
-                    _navigationProvider.GoForward(new PlayersViewModel(_context, _navigationProvider));
+                    //_navigationProvider.GoForward(new PlayersViewModel(_context, _navigationProvider));
+                    _navigationProvider.Navigate("players");
                 });
             }
         }
@@ -36,7 +37,8 @@ namespace ViewModelFirst.ViewModels
             {
                 return new RelayCommand(delegate
                 {
-                    _navigationProvider.GoForward(new TeamsViewModel());
+                    //_navigationProvider.GoForward(new TeamsViewModel());
+                    _navigationProvider.Navigate("teams");
                 });
             }
         }
@@ -47,7 +49,8 @@ namespace ViewModelFirst.ViewModels
             {
                 return new RelayCommand(delegate
                 {
-                    _navigationProvider.GoForward(new GamesViewModel());
+                    //_navigationProvider.GoForward(new GamesViewModel());
+                    _navigationProvider.Navigate("games");
                 });
             }
         }

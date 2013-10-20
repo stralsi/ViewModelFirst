@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="App_Start\Bootstrap.cs" />
+    <Compile Include="App_Start\NavigationConfig.cs" />
     <Compile Include="INavigationProvider.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Game.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Views\MainMenuView.xaml.cs">
       <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NavigationMap.cs" />
     <Compile Include="Views\PlayersView.xaml.cs">
       <DependentUpon>PlayersView.xaml</DependentUpon>
     </Compile>
